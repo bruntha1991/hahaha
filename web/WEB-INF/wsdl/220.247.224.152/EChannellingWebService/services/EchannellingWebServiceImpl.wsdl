@@ -1,0 +1,871 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://serviceimpl.com.echannelling" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://serviceimpl.com.echannelling" xmlns:intf="http://serviceimpl.com.echannelling" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://serviceimpl.com.echannelling" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <element name="getTime">
+    <complexType>
+     <sequence>
+      <element name="appointmentDetails" type="impl:AppointmentDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="AppointmentDetails">
+    <sequence>
+     <element name="appTime" nillable="true" type="xsd:string"/>
+     <element name="appointmentNumber" type="xsd:int"/>
+     <element name="appointmentStatus" type="xsd:int"/>
+     <element name="channelRoom" nillable="true" type="xsd:string"/>
+     <element name="doctorCharge" type="xsd:double"/>
+     <element name="doctorName" nillable="true" type="xsd:string"/>
+     <element name="echCharge" type="xsd:double"/>
+     <element name="hosCharge" type="xsd:double"/>
+     <element name="hosLocation" nillable="true" type="xsd:string"/>
+     <element name="hosName" nillable="true" type="xsd:string"/>
+     <element name="hosTelephone" nillable="true" type="xsd:string"/>
+     <element name="nicNumber" nillable="true" type="xsd:string"/>
+     <element name="patientName" nillable="true" type="xsd:string"/>
+     <element name="referenceNumber" nillable="true" type="xsd:string"/>
+     <element name="remarks" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="getTimeResponse">
+    <complexType>
+     <sequence>
+      <element name="getTimeReturn" type="impl:AppointmentDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="doChannelResp">
+    <complexType>
+     <sequence>
+      <element name="paymentDetails" type="impl:PaymentDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="PaymentDetails">
+    <sequence>
+     <element name="agentCode" nillable="true" type="xsd:string"/>
+     <element name="paymentReference" nillable="true" type="xsd:string"/>
+     <element name="paymentStatus" type="xsd:int"/>
+     <element name="totalAmount" type="xsd:double"/>
+    </sequence>
+   </complexType>
+   <element name="doChannelRespResponse">
+    <complexType>
+     <sequence>
+      <element name="doChannelRespReturn" type="impl:AppointmentDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="doChannelling">
+    <complexType>
+     <sequence>
+      <element name="sessionDetatials" type="impl:SessionDetatials"/>
+      <element name="patientDetails" type="impl:PatientDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="SessionDetatials">
+    <sequence>
+     <element name="appDate" nillable="true" type="xsd:string"/>
+     <element name="countActivePatient" type="xsd:int"/>
+     <element name="countMaxPatient" type="xsd:int"/>
+     <element name="docname" nillable="true" type="xsd:string"/>
+     <element name="docno" nillable="true" type="xsd:string"/>
+     <element name="hosSequenceNumber" nillable="true" type="xsd:string"/>
+     <element name="hosid" nillable="true" type="xsd:string"/>
+     <element name="hosloc" nillable="true" type="xsd:string"/>
+     <element name="hosname" nillable="true" type="xsd:string"/>
+     <element name="nextLink" nillable="true" type="xsd:string"/>
+     <element name="referenceNumber" nillable="true" type="xsd:string"/>
+     <element name="remark" nillable="true" type="xsd:string"/>
+     <element name="sday" nillable="true" type="xsd:string"/>
+     <element name="showDate" nillable="true" type="xsd:string"/>
+     <element name="smonth" nillable="true" type="xsd:string"/>
+     <element name="spec" nillable="true" type="xsd:string"/>
+     <element name="specID" nillable="true" type="xsd:string"/>
+     <element name="syear" nillable="true" type="xsd:string"/>
+     <element name="tdate" nillable="true" type="xsd:string"/>
+     <element name="tday" nillable="true" type="xsd:string"/>
+     <element name="ttime" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PatientDetails">
+    <sequence>
+     <element name="docNotification" nillable="true" type="xsd:string"/>
+     <element name="emailAddress" nillable="true" type="xsd:string"/>
+     <element name="firstName" nillable="true" type="xsd:string"/>
+     <element name="ismember" type="xsd:boolean"/>
+     <element name="language" nillable="true" type="xsd:string"/>
+     <element name="lastName" nillable="true" type="xsd:string"/>
+     <element name="memberEch" nillable="true" type="xsd:string"/>
+     <element name="memberId" nillable="true" type="xsd:string"/>
+     <element name="memberPassword" nillable="true" type="xsd:string"/>
+     <element name="mobileNumber" nillable="true" type="xsd:string"/>
+     <element name="nationality" nillable="true" type="xsd:string"/>
+     <element name="nicNumber" nillable="true" type="xsd:string"/>
+     <element name="paymentMode" nillable="true" type="xsd:string"/>
+     <element name="paymentType" nillable="true" type="xsd:string"/>
+     <element name="title" nillable="true" type="xsd:string"/>
+     <element name="uhid" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="doChannellingResponse">
+    <complexType>
+     <sequence>
+      <element name="doChannellingReturn" type="impl:PaymentDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewSessionDetails">
+    <complexType>
+     <sequence>
+      <element name="searchDoctors" type="impl:SearchDoctors"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="SearchDoctors">
+    <sequence>
+     <element name="appDate" nillable="true" type="xsd:string"/>
+     <element name="appDay" nillable="true" type="xsd:string"/>
+     <element name="available" type="xsd:boolean"/>
+     <element name="docName" nillable="true" type="xsd:string"/>
+     <element name="doctorNo" nillable="true" type="xsd:string"/>
+     <element name="hosCode" nillable="true" type="xsd:string"/>
+     <element name="hosName" nillable="true" type="xsd:string"/>
+     <element name="hosTown" nillable="true" type="xsd:string"/>
+     <element name="specName" nillable="true" type="xsd:string"/>
+     <element name="specializationId" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="viewSessionDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="viewSessionDetailsReturn" type="apachesoap:Map"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewEchannellingCharge">
+    <complexType>
+     <sequence>
+      <element name="sessionDetatials" type="impl:SessionDetatials"/>
+      <element name="patientDetails" type="impl:PatientDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewEchannellingChargeResponse">
+    <complexType>
+     <sequence>
+      <element name="viewEchannellingChargeReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewPatientDetails">
+    <complexType>
+     <sequence>
+      <element name="sessionDetatials" type="impl:SessionDetatials"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewPatientDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="viewPatientDetailsReturn" type="apachesoap:Map"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewMemberDetails">
+    <complexType>
+     <sequence>
+      <element name="memberId" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewMemberDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="viewMemberDetailsReturn" type="impl:PatientDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewAppointmentNumber">
+    <complexType>
+     <sequence>
+      <element name="sessionDetatials" type="impl:SessionDetatials"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewAppointmentNumberResponse">
+    <complexType>
+     <sequence>
+      <element name="viewAppointmentNumberReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="requestPaymentUrl">
+    <complexType>
+     <sequence>
+      <element name="sessionDetatials" type="impl:SessionDetatials"/>
+      <element name="patientDetails" type="impl:PatientDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="requestPaymentUrlResponse">
+    <complexType>
+     <sequence>
+      <element name="requestPaymentUrlReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkupHospitals">
+    <complexType/>
+   </element>
+   <element name="checkupHospitalsResponse">
+    <complexType>
+     <sequence>
+      <element name="checkupHospitalsReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_anyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <element name="viewSpecialtyList">
+    <complexType/>
+   </element>
+   <element name="viewSpecialtyListResponse">
+    <complexType>
+     <sequence>
+      <element name="viewSpecialtyListReturn" type="apachesoap:Map"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkupCategory">
+    <complexType>
+     <sequence>
+      <element name="hospital" type="impl:Hospital"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Hospital">
+    <sequence>
+     <element name="hosId" nillable="true" type="xsd:string"/>
+     <element name="hosName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="checkupCategoryResponse">
+    <complexType>
+     <sequence>
+      <element name="checkupCategoryReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewDocList">
+    <complexType>
+     <sequence>
+      <element name="searchValues" type="impl:SearchValues"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="SearchValues">
+    <sequence>
+     <element name="appointmentDate" nillable="true" type="xsd:string"/>
+     <element name="docLastName" nillable="true" type="xsd:string"/>
+     <element name="hospitalId" nillable="true" type="xsd:string"/>
+     <element name="remarks" nillable="true" type="xsd:string"/>
+     <element name="specialityId" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="viewDocListResponse">
+    <complexType>
+     <sequence>
+      <element name="viewDocListReturn" type="apachesoap:Map"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewHosptals">
+    <complexType/>
+   </element>
+   <element name="viewHosptalsResponse">
+    <complexType>
+     <sequence>
+      <element name="viewHosptalsReturn" type="apachesoap:Map"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://xml.apache.org/xml-soap" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://serviceimpl.com.echannelling"/>
+   <complexType name="mapItem">
+    <sequence>
+     <element name="key" nillable="true" type="xsd:anyType"/>
+     <element name="value" nillable="true" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <complexType name="Map">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="apachesoap:mapItem"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="doChannellingResponse">
+
+      <wsdl:part element="impl:doChannellingResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkupCategoryResponse">
+
+      <wsdl:part element="impl:checkupCategoryResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewHosptalsRequest">
+
+      <wsdl:part element="impl:viewHosptals" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewAppointmentNumberRequest">
+
+      <wsdl:part element="impl:viewAppointmentNumber" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="doChannellingRequest">
+
+      <wsdl:part element="impl:doChannelling" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewSpecialtyListResponse">
+
+      <wsdl:part element="impl:viewSpecialtyListResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkupCategoryRequest">
+
+      <wsdl:part element="impl:checkupCategory" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewPatientDetailsResponse">
+
+      <wsdl:part element="impl:viewPatientDetailsResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewEchannellingChargeRequest">
+
+      <wsdl:part element="impl:viewEchannellingCharge" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="requestPaymentUrlRequest">
+
+      <wsdl:part element="impl:requestPaymentUrl" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewSpecialtyListRequest">
+
+      <wsdl:part element="impl:viewSpecialtyList" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewDocListRequest">
+
+      <wsdl:part element="impl:viewDocList" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewMemberDetailsResponse">
+
+      <wsdl:part element="impl:viewMemberDetailsResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkupHospitalsRequest">
+
+      <wsdl:part element="impl:checkupHospitals" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewHosptalsResponse">
+
+      <wsdl:part element="impl:viewHosptalsResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewSessionDetailsRequest">
+
+      <wsdl:part element="impl:viewSessionDetails" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewMemberDetailsRequest">
+
+      <wsdl:part element="impl:viewMemberDetails" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="requestPaymentUrlResponse">
+
+      <wsdl:part element="impl:requestPaymentUrlResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewAppointmentNumberResponse">
+
+      <wsdl:part element="impl:viewAppointmentNumberResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkupHospitalsResponse">
+
+      <wsdl:part element="impl:checkupHospitalsResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewSessionDetailsResponse">
+
+      <wsdl:part element="impl:viewSessionDetailsResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="doChannelRespResponse">
+
+      <wsdl:part element="impl:doChannelRespResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTimeRequest">
+
+      <wsdl:part element="impl:getTime" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewDocListResponse">
+
+      <wsdl:part element="impl:viewDocListResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="doChannelRespRequest">
+
+      <wsdl:part element="impl:doChannelResp" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTimeResponse">
+
+      <wsdl:part element="impl:getTimeResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewPatientDetailsRequest">
+
+      <wsdl:part element="impl:viewPatientDetails" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewEchannellingChargeResponse">
+
+      <wsdl:part element="impl:viewEchannellingChargeResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="EchannellingWebServiceImpl">
+
+      <wsdl:operation name="getTime">
+
+         <wsdl:input message="impl:getTimeRequest" name="getTimeRequest"/>
+
+         <wsdl:output message="impl:getTimeResponse" name="getTimeResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="doChannelResp">
+
+         <wsdl:input message="impl:doChannelRespRequest" name="doChannelRespRequest"/>
+
+         <wsdl:output message="impl:doChannelRespResponse" name="doChannelRespResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="doChannelling">
+
+         <wsdl:input message="impl:doChannellingRequest" name="doChannellingRequest"/>
+
+         <wsdl:output message="impl:doChannellingResponse" name="doChannellingResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewSessionDetails">
+
+         <wsdl:input message="impl:viewSessionDetailsRequest" name="viewSessionDetailsRequest"/>
+
+         <wsdl:output message="impl:viewSessionDetailsResponse" name="viewSessionDetailsResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewEchannellingCharge">
+
+         <wsdl:input message="impl:viewEchannellingChargeRequest" name="viewEchannellingChargeRequest"/>
+
+         <wsdl:output message="impl:viewEchannellingChargeResponse" name="viewEchannellingChargeResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewPatientDetails">
+
+         <wsdl:input message="impl:viewPatientDetailsRequest" name="viewPatientDetailsRequest"/>
+
+         <wsdl:output message="impl:viewPatientDetailsResponse" name="viewPatientDetailsResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewMemberDetails">
+
+         <wsdl:input message="impl:viewMemberDetailsRequest" name="viewMemberDetailsRequest"/>
+
+         <wsdl:output message="impl:viewMemberDetailsResponse" name="viewMemberDetailsResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewAppointmentNumber">
+
+         <wsdl:input message="impl:viewAppointmentNumberRequest" name="viewAppointmentNumberRequest"/>
+
+         <wsdl:output message="impl:viewAppointmentNumberResponse" name="viewAppointmentNumberResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="requestPaymentUrl">
+
+         <wsdl:input message="impl:requestPaymentUrlRequest" name="requestPaymentUrlRequest"/>
+
+         <wsdl:output message="impl:requestPaymentUrlResponse" name="requestPaymentUrlResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkupHospitals">
+
+         <wsdl:input message="impl:checkupHospitalsRequest" name="checkupHospitalsRequest"/>
+
+         <wsdl:output message="impl:checkupHospitalsResponse" name="checkupHospitalsResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewSpecialtyList">
+
+         <wsdl:input message="impl:viewSpecialtyListRequest" name="viewSpecialtyListRequest"/>
+
+         <wsdl:output message="impl:viewSpecialtyListResponse" name="viewSpecialtyListResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkupCategory">
+
+         <wsdl:input message="impl:checkupCategoryRequest" name="checkupCategoryRequest"/>
+
+         <wsdl:output message="impl:checkupCategoryResponse" name="checkupCategoryResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewDocList">
+
+         <wsdl:input message="impl:viewDocListRequest" name="viewDocListRequest"/>
+
+         <wsdl:output message="impl:viewDocListResponse" name="viewDocListResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewHosptals">
+
+         <wsdl:input message="impl:viewHosptalsRequest" name="viewHosptalsRequest"/>
+
+         <wsdl:output message="impl:viewHosptalsResponse" name="viewHosptalsResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="EchannellingWebServiceImplSoapBinding" type="impl:EchannellingWebServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getTime">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTimeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTimeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="doChannelResp">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="doChannelRespRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="doChannelRespResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="doChannelling">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="doChannellingRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="doChannellingResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewSessionDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viewSessionDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viewSessionDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewEchannellingCharge">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viewEchannellingChargeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viewEchannellingChargeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewPatientDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viewPatientDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viewPatientDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewMemberDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viewMemberDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viewMemberDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewAppointmentNumber">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viewAppointmentNumberRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viewAppointmentNumberResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="requestPaymentUrl">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="requestPaymentUrlRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="requestPaymentUrlResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkupHospitals">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkupHospitalsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkupHospitalsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewSpecialtyList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viewSpecialtyListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viewSpecialtyListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkupCategory">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkupCategoryRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkupCategoryResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewDocList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viewDocListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viewDocListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewHosptals">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viewHosptalsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viewHosptalsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="EchannellingWebServiceImplService">
+
+      <wsdl:port binding="impl:EchannellingWebServiceImplSoapBinding" name="EchannellingWebServiceImpl">
+
+         <wsdlsoap:address location="http://220.247.224.152/EChannellingWebService/services/EchannellingWebServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
